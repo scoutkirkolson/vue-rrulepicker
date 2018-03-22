@@ -215,10 +215,10 @@
 
 
                 <!-- calendar -->
-                <r-rule-picker-calendar-panel
+                <vue-rrulepicker-calendarpanel
                     class           = "rrp-popup-calendar"
                     :show           = "showPopup">
-                </r-rule-picker-calendar-panel>
+                </vue-rrulepicker-calendarpanel>
             </div>
 
             <div class="rrp-popup-footer" v-if="confirm">
@@ -230,17 +230,17 @@
 
 <script>
     import * as Cmp from './compare.es6';
-    import RRulePickerCalendarPanel from './RRulePickerCalendarPanel.vue'
+    import vueRrulepickerCalendarpanel from './vue-rrulepicker-calendarpanel.vue'
     import Languages from './languages_rrulepicker.js'
     import * as RRL from './languages_rrule.js'
 
     export default {
         //NAME
-        name        : 'RRulePicker'
+        name        : 'vue-rrulepicker'
 
         //COMPONENTS
         , components  : {
-            RRulePickerCalendarPanel
+            vueRrulepickerCalendarpanel
         }
 
         //PROPS

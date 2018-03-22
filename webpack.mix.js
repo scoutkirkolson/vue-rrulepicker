@@ -17,7 +17,7 @@ mix.options({
     }
 });
 
-mix.js('src/RRulePicker.vue', 'dist/js');
+mix.js('src/vue-rrulepicker.vue', 'dist/js');
 
 //mix.version();
 
