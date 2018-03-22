@@ -422,7 +422,8 @@
             , getRRule() {
                 let that = this;
 
-                if (that.rrule.frequency) {
+                if (that.rrule.startdate
+                &&  that.rrule.frequency) {
                     let frequency   = null;
                     let interval    = 1;
                     let byday       = [];
@@ -583,14 +584,14 @@
 
                     // Create a rule:
                     let rule = new that.RRule({
-                        freq: frequency
-                        , interval: interval
-                        , byweekday: byday
-                        , bymonthday: bymonthday
-                        , bymonth: bymonth
-                        , bysetpos: Cmp.is_numeric(that.rrule.bysetpos) ? parseInt(that.rrule.bysetpos) : 1
-                        , dtstart: that.moment(that.rrule.startdate).toDate()
-                        , until: that.rrule.enddate ? that.moment(that.rrule.enddate).toDate() : that.moment('12/31/' + (new Date()).getFullYear()).toDate()
+                        freq            : frequency
+                        , interval      : interval
+                        , byweekday     : byday
+                        , bymonthday    : bymonthday
+                        , bymonth       : bymonth
+                        , bysetpos      : Cmp.is_numeric(that.rrule.bysetpos) ? parseInt(that.rrule.bysetpos) : 1
+                        , dtstart       : that.moment(that.rrule.startdate).toDate()
+                        , until         : that.rrule.enddate ? that.moment(that.rrule.enddate).toDate() : that.moment('12/31/' + (new Date()).getFullYear()).toDate()
                         //, count: that.comingupLimit
                     })
 
