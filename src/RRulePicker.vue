@@ -229,9 +229,7 @@
 </template>
 
 <script>
-    import * as Arr from '../libraries/array.es6';
-    import * as Cmp from '../libraries/compare.es6';
-    import * as Str from '../libraries/string.es6';
+    import * as Cmp from './compare.es6';
     import RRulePickerCalendarPanel from './RRulePickerCalendarPanel.vue'
     import Languages from './languages_rrulepicker.js'
     import * as RRL from './languages_rrule.js'
