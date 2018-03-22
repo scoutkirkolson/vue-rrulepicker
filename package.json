@@ -1,5 +1,5 @@
 {
-  "name": "RRulePicker",
+  "name": "vue-rrulepicker",
   "description": "A Vue RRULE input element",
   "version": "0.0.1",
   "dependencies": {
