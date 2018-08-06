@@ -2,6 +2,7 @@
   "name": "sko-rrulepicker",
   "description": "A Vue RRULE input element",
   "version": "0.0.3",
+  "files": ["dist/*"],
   "dependencies": {
     "es6lib": "git+ssh://git@github.com/scoutkirkolson/es6lib.git",
     "jquery": "^3.3.1",
