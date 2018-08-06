@@ -76,7 +76,7 @@ export default {
             , {'key': 6, 'value': 'Jun', 'value_full': 'juni'}
             , {'key': 7, 'value': 'Jul', 'value_full': 'juli'}
             , {'key': 8, 'value': 'Aug', 'value_full': 'augustus'}
-            , {'key': 9, 'value': 'Sep', 'value_full': 'septembet'}
+            , {'key': 9, 'value': 'Sep', 'value_full': 'september'}
             , {'key': 10, 'value': 'Oct', 'value_full': 'oktober'}
             , {'key': 11, 'value': 'Nov', 'value_full': 'november'}
             , {'key': 12, 'value': 'Dec', 'value_full': 'december'}
