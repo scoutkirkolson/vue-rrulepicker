@@ -17,7 +17,8 @@ mix.options({
     }
 });
 
-mix.js('src/vue-rrulepicker.vue', 'dist/js');
+mix.js('src/sko-rrulepicker-calendarpanel.vue', 'dist/js');
+mix.js('src/sko-rrulepicker.vue', 'dist/js');
 
 //mix.version();
 
