@@ -5007,7 +5007,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/louck/Development/Code/vue-rrulepicker/src/sko-rrulepicker-calendarpanel.vue"
+Component.options.__file = "/Users/louck/Development/Code/sko-rrulepicker/src/sko-rrulepicker-calendarpanel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] sko-rrulepicker-calendarpanel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -5018,9 +5018,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-20b0585c", Component.options)
+    hotAPI.createRecord("data-v-51f965ad", Component.options)
   } else {
-    hotAPI.reload("data-v-20b0585c", Component.options)
+    hotAPI.reload("data-v-51f965ad", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -5697,7 +5697,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-20b0585c", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-51f965ad", module.exports)
   }
 }
 
@@ -5712,13 +5712,13 @@ var content = __webpack_require__(6);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("acfe8796", content, false, {});
+var update = __webpack_require__(3)("3383e389", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-20b0585c\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker-calendarpanel.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-20b0585c\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker-calendarpanel.vue");
+   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51f965ad\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker-calendarpanel.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51f965ad\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker-calendarpanel.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -18611,7 +18611,7 @@ var Component = __webpack_require__(2)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/louck/Development/Code/vue-rrulepicker/src/sko-rrulepicker.vue"
+Component.options.__file = "/Users/louck/Development/Code/sko-rrulepicker/src/sko-rrulepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] sko-rrulepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -18622,9 +18622,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4611d4ba", Component.options)
+    hotAPI.createRecord("data-v-794854b4", Component.options)
   } else {
-    hotAPI.reload("data-v-4611d4ba", Component.options)
+    hotAPI.reload("data-v-794854b4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19017,11 +19017,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    //NAME
-    name: 'skoRRulePicker'
-
     //COMPONENTS
-    , components: {
+    components: {
         SkoRRulePickerCalendarPanel: __WEBPACK_IMPORTED_MODULE_3__sko_rrulepicker_calendarpanel_vue___default.a
 
         //PROPS
@@ -24088,7 +24085,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4611d4ba", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-794854b4", module.exports)
   }
 }
 
@@ -24103,13 +24100,13 @@ var content = __webpack_require__(139);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("4982a092", content, false, {});
+var update = __webpack_require__(3)("bac91d46", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4611d4ba\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4611d4ba\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker.vue");
+   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-794854b4\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-794854b4\",\"scoped\":false,\"hasInlineConfig\":true}!../node_modules/sass-loader/lib/loader.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sko-rrulepicker.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
