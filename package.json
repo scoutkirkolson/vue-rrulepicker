@@ -1,7 +1,7 @@
 {
   "name": "sko-rrulepicker",
   "description": "A Vue RRULE input element",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "files": [
     "dist/**/*"
   ],
