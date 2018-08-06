@@ -243,11 +243,8 @@
     import * as RRL from './languages_rrule.js'
 
     export default {
-        //NAME
-        name        : 'skoRRulePicker'
-
         //COMPONENTS
-        , components  : {
+        components  : {
             SkoRRulePickerCalendarPanel
         }
 
