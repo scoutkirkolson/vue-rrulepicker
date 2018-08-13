@@ -235,9 +235,7 @@
 </template>
 
 <script>
-    import * as Arr from 'es6lib/functions/array.es6';
     import * as Cmp from 'es6lib/functions/compare.es6';
-    import * as Str from 'es6lib/functions/string.es6';
     import SkoRRulePickerCalendarPanel from './sko-rrulepicker-calendarpanel.vue'
     import Languages from './languages_rrulepicker.js'
     import * as RRL from './languages_rrule.js'
@@ -372,6 +370,7 @@
         //CREATED
         created() {
             let that = this;
+
             that.moment.locale(that.lang);
 
             that.rrule.startdate    = that.startDate ? that.moment(that.startDate).format('Y-MM-DD') : '';

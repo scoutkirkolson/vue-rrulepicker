@@ -3,7 +3,6 @@ var webpack = require('webpack')
 var urloader = require('url-loader')
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-
 module.exports = {
     entry: './src/sko-rrulepicker.vue',
     output: {
