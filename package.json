@@ -8,6 +8,7 @@
     "url": "https://github.com/KirkOlson/vue-rrulepicker/issues"
   },
   "homepage": "https://github.com/KirkOlson/vue-rrulepicker#readme",
+  "main": "dist/sko-rrulepicker.js",
   "scripts": {
     "dev": "yarn development",
     "development": "cross-env NODE_ENV=development webpack --progress --hide-modules",
