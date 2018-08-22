@@ -680,7 +680,7 @@
 
                 if (that.getText() && rule) {
                     //$.each(rule.all(), function(i, item) {
-                    $.each(rule.between(that.moment().add(that.comingupOffset - 1, 'day').startOf('day').toDate(), that.moment().add(1, 'years').toDate()), function(i, item) {
+                    $.each(rule.between(that.moment().add(that.comingupOffset, 'day').startOf('day').toDate(), that.moment().add(1, 'years').toDate()), function(i, item) {
                         dates.push(that.moment(item).format('dddd D MMMM YYYY'));
 
                         count++;

@@ -44,6 +44,22 @@ module.exports = {
     devtool: '#eval-source-map'
 }
 
+/*
+module.exports = {
+    entry: path.join(__dirname, '../examples/src/app.js'),
+    html: {
+        template: path.join(__dirname, '../examples/src/index.html')
+    },
+    webpack: {
+        devtool: false,
+        output: {
+            path: dist,
+            publicPath: ''
+        }
+    }
+};
+*/
+
 if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map'
     // http://vue-loader.vuejs.org/en/workflow/production.html
