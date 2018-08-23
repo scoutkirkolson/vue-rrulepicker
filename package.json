@@ -22,7 +22,7 @@
     "es6lib": "git+ssh://git@github.com/scoutkirkolson/es6lib.git",
     "jquery": "^3.3.1",
     "moment": "^2.22.0",
-    "rrule": "^2.2.9"
+    "rrule": "2.2.0"
   },
   "devDependencies": {
     "cross-env": "^4.0.0",
