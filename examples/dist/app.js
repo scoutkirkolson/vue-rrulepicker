@@ -28616,6 +28616,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -29092,6 +29097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__languages_rrulepicker_js__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__languages_rrule_js__ = __webpack_require__(154);
+//
 //
 //
 //
@@ -29995,7 +30001,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.rrp {\n  position: relative;\n  color: #73879c;\n}\n.rrp * {\n    box-sizing: border-box;\n}\n.sko-rrp-input {\n  width: 100%;\n  padding: 6px 30px 6px 10px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.sko-rrp-input[readonly]:not([disabled]) {\n  background-color: transparent !important;\n}\n.sko-rrp-input-icon {\n  top: 3px;\n  right: 3px;\n  position: absolute;\n  width: 30px;\n  text-align: center;\n  font-style: normal;\n}\n.sko-rrp-input-icon::after {\n    content: '';\n    display: inline-block;\n    width: 0;\n    height: 100%;\n    vertical-align: middle;\n}\n.sko-rrp-input-icon__close::before {\n  content: '\\2716';\n  vertical-align: middle;\n}\n.sko-rrp-comingup {\n  margin-top: 1rem;\n}\n.sko-rrp-comingup label {\n  color: black;\n}\n.sko-rrp-comingup-dates {\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  min-height: 5rem;\n}\n.sko-rrp-popup {\n  position: absolute;\n  height: auto;\n  width: 500px;\n  margin-top: 1px;\n  margin-bottom: 1px;\n  border: 1px solid #d9d9d9;\n  background-color: #fff;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  top: 40px;\n  z-index: 5000;\n}\n.sko-rrp-popup.range {\n    width: 496px;\n}\n.sko-rrp-popup-body {\n  display: flex;\n  height: 90%;\n}\n.sko-rrp-popup-footer {\n  clear: both;\n  text-align: right;\n  border-top: 1px solid rgba(0, 0, 0, 0.05);\n}\n.sko-rrp-popup-rrule {\n  font-size: 14px;\n  padding: 0.5rem;\n  width: 50%;\n}\n.sko-rrp-popup-rrule .form-group {\n  margin-bottom: 0px;\n}\n.sko-rrp-popup-calendar {\n  width: 50%;\n}\n.sko-rrp-rrule-label {\n  width: 35%;\n}\n.sko-rrp-rrule-input {\n  width: 60%;\n}\n.sko-rrp-rrule-interval-input {\n  width: 20%;\n}\n.sko-rrp-rrule-monthly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal {\n  display: flex;\n}\n.sko-rrp-rrule-monthly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal label {\n  width: 30%;\n}\n.sko-rrp-rrule-yearlly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-yearly-type-ordinal {\n  margin-bottom: 5px;\n}\n.sko-rrp-rrule-yearly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-bymonth .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 30%;\n}\n.sko-rrp-rrule-bymonthday .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 28px;\n}\nselect.sko-rrp-rrule-bymonthday {\n  width: 20%;\n}\n.sko-rrp-rrule-bysetpos-input {\n  width: 40%;\n}\n.sko-rrp-rrule-byday-input {\n  width: 55%;\n}\n.sko-rrp-rrule-bymonth-input {\n  width: 55%;\n}\n.sko-rrp-btn {\n  line-height: 1;\n  margin: 0 5px;\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.sko-rrp {\n  position: relative;\n  color: #73879c;\n}\n.sko-rrp * {\n    box-sizing: border-box;\n}\n.sko-rrp-input {\n  width: 100%;\n  padding: 6px 30px 6px 10px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.sko-rrp-input[readonly]:not([disabled]) {\n  background-color: transparent !important;\n}\n.sko-rrp-input-icon {\n  top: 3px;\n  right: 3px;\n  position: absolute;\n  width: 30px;\n  text-align: center;\n  font-style: normal;\n}\n.sko-rrp-input-icon::after {\n    content: '';\n    display: inline-block;\n    width: 0;\n    height: 100%;\n    vertical-align: middle;\n}\n.sko-rrp-input-icon__close::before {\n  content: '\\2716';\n  vertical-align: middle;\n}\n.sko-rrp-comingup {\n  margin-top: 1rem;\n}\n.sko-rrp-comingup label {\n  color: black;\n}\n.sko-rrp-comingup-dates {\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  min-height: 5rem;\n}\n.sko-rrp-popup {\n  position: absolute;\n  height: auto;\n  width: 500px;\n  margin-top: 1px;\n  margin-bottom: 1px;\n  border: 1px solid #d9d9d9;\n  background-color: #fff;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  top: 40px;\n  z-index: 5000;\n}\n.sko-rrp-popup.range {\n    width: 496px;\n}\n.sko-rrp-popup-body {\n  display: flex;\n  height: 90%;\n}\n.sko-rrp-popup-footer {\n  clear: both;\n  text-align: right;\n  border-top: 1px solid rgba(0, 0, 0, 0.05);\n}\n.sko-rrp-popup-rrule {\n  font-size: 14px;\n  padding: 0.5rem;\n  width: 50%;\n}\n.sko-rrp-popup-rrule .form-group {\n  margin-bottom: 0px;\n}\n.sko-rrp-popup-calendar {\n  width: 50%;\n}\n.sko-rrp-rrule-label {\n  width: 35%;\n}\n.sko-rrp-rrule-input {\n  width: 60%;\n}\n.sko-rrp-rrule-interval-input {\n  width: 20%;\n}\n.sko-rrp-rrule-monthly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal {\n  display: flex;\n}\n.sko-rrp-rrule-monthly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal label {\n  width: 30%;\n}\n.sko-rrp-rrule-yearlly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-yearly-type-ordinal {\n  margin-bottom: 5px;\n}\n.sko-rrp-rrule-yearly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-bymonth .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 30%;\n}\n.sko-rrp-rrule-bymonthday .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 28px;\n}\nselect.sko-rrp-rrule-bymonthday {\n  width: 20%;\n}\n.sko-rrp-rrule-bysetpos-input {\n  width: 40%;\n}\n.sko-rrp-rrule-byday-input {\n  width: 55%;\n}\n.sko-rrp-rrule-bymonth-input {\n  width: 55%;\n}\n.sko-rrp-btn {\n  line-height: 1;\n  margin: 0 5px;\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -34462,9 +34468,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "rrule"
     }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  })])])])])
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.rrule),
+      expression: "rrule"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "readonly": ""
+    },
+    domProps: {
+      "value": (_vm.rrule)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.rrule = $event.target.value
+      }
+    }
+  })], 1), _vm._v(" "), _vm._m(1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     staticClass: "hero is-primary is-bold"
@@ -34474,9 +34498,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container"
   }, [_c('h1', {
     staticClass: "title"
-  }, [_vm._v("\n                    Scout Kirk Olson's Vue2 RRulepicker component\n                ")]), _vm._v(" "), _c('h2', {
+  }, [_vm._v("\n                        Scout Kirk Olson's Vue2 RRulepicker component\n                    ")]), _vm._v(" "), _c('h2', {
     staticClass: "subtitle"
-  }, [_vm._v("\n                Input field component to select recurring rules using Vue.js v2\n                ")])])])])
+  }, [_vm._v("\n                    Input field component to select recurring rules using Vue.js v2\n                    ")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('pre', [_c('code', [_vm._v("<p>Sample text here...</p>\n<p>And another line of sample text here...</p>\n")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -34682,7 +34710,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.closePopup),
       expression: "closePopup"
     }],
-    staticClass: "rrp",
+    staticClass: "sko-rrp",
     class: {
       'disabled': _vm.disabled
     },
@@ -34715,6 +34743,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "sko-rrp-input-icon",
     attrs: {
       "src": __webpack_require__(145)
+    },
+    on: {
+      "click": _vm.togglePopup
     }
   }), _vm._v(" "), _c('div', {
     directives: [{

@@ -32,6 +32,7 @@
         <img
             class           = "sko-rrp-input-icon"
             src             = "./assets/calendar.svg"
+            @click          = "togglePopup"
         >
 
         <!-- coming up -->

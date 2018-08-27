@@ -34,9 +34,14 @@
                             start-date      = "2018-07-01"
                             v-model         = "rrule"
                         ></sko-r-rule-picker>
+                        <br />
+                        <input class="form-control" v-model="rrule" readonly>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-8">
+                        <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+                        &lt;p&gt;And another line of sample text here...&lt;/p&gt;
+                        </code></pre>
                     </div>
                 </div>
             </div>
