@@ -22,6 +22,7 @@
                             :comingup       = "true"
                             comingup-text   = "Coming up"
                             :comingup-offset= "7"
+                            :confirm        = "false"
                             :calendar       = "false"
                             id              = "rrulepicker1"
                             :input-class    = "{

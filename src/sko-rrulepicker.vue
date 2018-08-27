@@ -1,6 +1,6 @@
 <template>
     <div
-        class           = "rrp"
+        class           = "sko-rrp"
         :class          = "{'disabled': disabled}"
         :style          = "{'width': getWidth() }"
         v-clickoutside  = "closePopup"
@@ -21,12 +21,18 @@
             @click          = "togglePopup"
             @mousedown      = "$event.preventDefault()"
         >
+        <!--
         <i
             class           = "sko-rrp-input-icon fa fa-calendar"
             @mouseenter     = "hoverIcon"
             @mouseleave     = "hoverIcon"
             @click          = "clickIcon" >
         </i>
+        -->
+        <img
+            class           = "sko-rrp-input-icon"
+            src             = "./assets/calendar.svg"
+        >
 
         <!-- coming up -->
         <div
@@ -275,10 +281,10 @@
                 , default   : 'en'
             }
 
-            , shortcuts: {
-                type        : [Boolean, Array]
-                , default   : true
-            }
+            //, shortcuts: {
+            //    type        : [Boolean, Array]
+            //    , default   : true
+            //}
 
             , disabledDays: {
                 type        : Array
@@ -296,6 +302,7 @@
                 type        : Boolean
                 , default   : true
             }
+
             , confirmText: {
                 type        : String
                 , default   : 'OK'
@@ -305,14 +312,17 @@
                 type        : Boolean
                 , default   : true
             }
+
             , comingupOffset: {
                 type        : Number
                 , default   : 0
             }
+
             , comingupLimit: {
                 type        : Number
                 , default   : 5
             }
+
             , comingupText: {
                 type        : String
                 , default   : 'Coming up'
@@ -327,10 +337,12 @@
                 type        : String
                 , default   : ''
             }
+
             , endDate: {
                 type        : String
                 , default   : ''
             }
+
             , endDateInput: {
                 type        : Boolean
                 , default   : true
@@ -748,9 +760,14 @@
             }
 
             , confirmValue() {
-                this.updateValue()
-                this.closePopup()
-                this.$emit('confirm', this.currentValue)
+                let that = this
+
+                that.updateValue()
+                that.$emit('confirm', this.currentValue)
+
+                if (that.confirm) {
+                    this.closePopup()
+                }
             }
 
             , updateValue() {
@@ -766,33 +783,46 @@
             }
 
             , closePopup() {
-                this.showPopup = false
+                let that = this;
+
+                if (!that.confirm) {
+                    that.confirmValue();
+                }
+
+                that.showPopup = false
             }
 
             , togglePopup() {
-                if (this.showPopup) {
-                    this.$refs.input.blur()
-                    this.showPopup = false
+                let that = this;
+
+                if (that.showPopup) {
+                    that.$refs.input.blur()
+                    that.showPopup = false
                 } else {
-                    this.$refs.input.focus()
-                    this.showPopup = true
+                    that.$refs.input.focus()
+                    that.showPopup = true
                 }
             }
 
             , hoverIcon(e) {
-                if (this.disabled) {
+                let that = this;
+
+                if (that.disabled) {
                     return
                 }
             }
 
             , clickIcon() {
-                if (this.disabled) {
+                let that = this;
+
+                if (that.disabled) {
                     return
                 }
-                if (this.showCloseIcon) {
-                    this.$emit('input', '')
+
+                if (that.showCloseIcon) {
+                    that.$emit('input', '')
                 } else {
-                    this.togglePopup()
+                    that.togglePopup()
                 }
             }
 
@@ -867,7 +897,7 @@
 
 
 <style lang="scss">
-    .rrp {
+    .sko-rrp {
         position    : relative;
         color       : #73879c;
         * {
@@ -887,9 +917,10 @@
     .sko-rrp-input[readonly]:not([disabled]) {
         background-color: transparent !important;
     }
+
     .sko-rrp-input-icon {
-        top: 10px;
-        right: 0;
+        top: 3px;
+        right: 3px;
         position: absolute;
         width: 30px;
         text-align: center;

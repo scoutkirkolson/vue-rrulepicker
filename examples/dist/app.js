@@ -4587,7 +4587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(152)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(153)(module)))
 
 /***/ }),
 /* 1 */
@@ -4720,13 +4720,13 @@ module.exports = g;
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(150)
+  __webpack_require__(151)
 }
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(136),
   /* template */
-  __webpack_require__(148),
+  __webpack_require__(149),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -17319,7 +17319,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(151)
+var listToStyles = __webpack_require__(152)
 
 /*
 type StyleObject = {
@@ -17536,7 +17536,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(134),
   /* template */
-  __webpack_require__(146),
+  __webpack_require__(147),
   /* styles */
   null,
   /* scopeId */
@@ -28615,6 +28615,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -29087,10 +29088,16 @@ const formatTime = function (time, type = "24") {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_es6lib_functions_compare_es6__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__sko_rrulepicker_calendarpanel_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__languages_rrulepicker_js__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__languages_rrule_js__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__languages_rrulepicker_js__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__languages_rrule_js__ = __webpack_require__(154);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29365,14 +29372,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         lang: {
             type: String,
             default: 'en'
-        },
 
-        shortcuts: {
-            type: [Boolean, Array],
-            default: true
-        },
+            //, shortcuts: {
+            //    type        : [Boolean, Array]
+            //    , default   : true
+            //}
 
-        disabledDays: {
+        }, disabledDays: {
             type: Array,
             default: function () {
                 return [];
@@ -29388,6 +29394,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Boolean,
             default: true
         },
+
         confirmText: {
             type: String,
             default: 'OK'
@@ -29397,14 +29404,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Boolean,
             default: true
         },
+
         comingupOffset: {
             type: Number,
             default: 0
         },
+
         comingupLimit: {
             type: Number,
             default: 5
         },
+
         comingupText: {
             type: String,
             default: 'Coming up'
@@ -29419,10 +29429,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: ''
         },
+
         endDate: {
             type: String,
             default: ''
         },
+
         endDateInput: {
             type: Boolean,
             default: true
@@ -29826,9 +29838,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         confirmValue() {
-            this.updateValue();
-            this.closePopup();
-            this.$emit('confirm', this.currentValue);
+            let that = this;
+
+            that.updateValue();
+            that.$emit('confirm', this.currentValue);
+
+            if (that.confirm) {
+                this.closePopup();
+            }
         },
 
         updateValue() {
@@ -29844,33 +29861,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         closePopup() {
-            this.showPopup = false;
+            let that = this;
+
+            if (!that.confirm) {
+                that.confirmValue();
+            }
+
+            that.showPopup = false;
         },
 
         togglePopup() {
-            if (this.showPopup) {
-                this.$refs.input.blur();
-                this.showPopup = false;
+            let that = this;
+
+            if (that.showPopup) {
+                that.$refs.input.blur();
+                that.showPopup = false;
             } else {
-                this.$refs.input.focus();
-                this.showPopup = true;
+                that.$refs.input.focus();
+                that.showPopup = true;
             }
         },
 
         hoverIcon(e) {
-            if (this.disabled) {
+            let that = this;
+
+            if (that.disabled) {
                 return;
             }
         },
 
         clickIcon() {
-            if (this.disabled) {
+            let that = this;
+
+            if (that.disabled) {
                 return;
             }
-            if (this.showCloseIcon) {
-                this.$emit('input', '');
+
+            if (that.showCloseIcon) {
+                that.$emit('input', '');
             } else {
-                this.togglePopup();
+                that.togglePopup();
             }
         },
 
@@ -29884,7 +29914,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 comma = ',';
             });
             that.rrule.byday = byday;
-            console.log(that.rrule);
         },
 
         clickMonthday(e) {
@@ -29966,7 +29995,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.rrp {\n  position: relative;\n  color: #73879c;\n}\n.rrp * {\n    box-sizing: border-box;\n}\n.sko-rrp-input {\n  width: 100%;\n  padding: 6px 30px 6px 10px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.sko-rrp-input[readonly]:not([disabled]) {\n  background-color: transparent !important;\n}\n.sko-rrp-input-icon {\n  top: 10px;\n  right: 0;\n  position: absolute;\n  width: 30px;\n  text-align: center;\n  font-style: normal;\n}\n.sko-rrp-input-icon::after {\n    content: '';\n    display: inline-block;\n    width: 0;\n    height: 100%;\n    vertical-align: middle;\n}\n.sko-rrp-input-icon__close::before {\n  content: '\\2716';\n  vertical-align: middle;\n}\n.sko-rrp-comingup {\n  margin-top: 1rem;\n}\n.sko-rrp-comingup label {\n  color: black;\n}\n.sko-rrp-comingup-dates {\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  min-height: 5rem;\n}\n.sko-rrp-popup {\n  position: absolute;\n  height: auto;\n  width: 500px;\n  margin-top: 1px;\n  margin-bottom: 1px;\n  border: 1px solid #d9d9d9;\n  background-color: #fff;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  top: 40px;\n  z-index: 5000;\n}\n.sko-rrp-popup.range {\n    width: 496px;\n}\n.sko-rrp-popup-body {\n  display: flex;\n  height: 90%;\n}\n.sko-rrp-popup-footer {\n  clear: both;\n  text-align: right;\n  border-top: 1px solid rgba(0, 0, 0, 0.05);\n}\n.sko-rrp-popup-rrule {\n  font-size: 14px;\n  padding: 0.5rem;\n  width: 50%;\n}\n.sko-rrp-popup-rrule .form-group {\n  margin-bottom: 0px;\n}\n.sko-rrp-popup-calendar {\n  width: 50%;\n}\n.sko-rrp-rrule-label {\n  width: 35%;\n}\n.sko-rrp-rrule-input {\n  width: 60%;\n}\n.sko-rrp-rrule-interval-input {\n  width: 20%;\n}\n.sko-rrp-rrule-monthly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal {\n  display: flex;\n}\n.sko-rrp-rrule-monthly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal label {\n  width: 30%;\n}\n.sko-rrp-rrule-yearlly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-yearly-type-ordinal {\n  margin-bottom: 5px;\n}\n.sko-rrp-rrule-yearly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-bymonth .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 30%;\n}\n.sko-rrp-rrule-bymonthday .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 28px;\n}\nselect.sko-rrp-rrule-bymonthday {\n  width: 20%;\n}\n.sko-rrp-rrule-bysetpos-input {\n  width: 40%;\n}\n.sko-rrp-rrule-byday-input {\n  width: 55%;\n}\n.sko-rrp-rrule-bymonth-input {\n  width: 55%;\n}\n.sko-rrp-btn {\n  line-height: 1;\n  margin: 0 5px;\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.rrp {\n  position: relative;\n  color: #73879c;\n}\n.rrp * {\n    box-sizing: border-box;\n}\n.sko-rrp-input {\n  width: 100%;\n  padding: 6px 30px 6px 10px;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.sko-rrp-input[readonly]:not([disabled]) {\n  background-color: transparent !important;\n}\n.sko-rrp-input-icon {\n  top: 3px;\n  right: 3px;\n  position: absolute;\n  width: 30px;\n  text-align: center;\n  font-style: normal;\n}\n.sko-rrp-input-icon::after {\n    content: '';\n    display: inline-block;\n    width: 0;\n    height: 100%;\n    vertical-align: middle;\n}\n.sko-rrp-input-icon__close::before {\n  content: '\\2716';\n  vertical-align: middle;\n}\n.sko-rrp-comingup {\n  margin-top: 1rem;\n}\n.sko-rrp-comingup label {\n  color: black;\n}\n.sko-rrp-comingup-dates {\n  background-color: #e9ecef;\n  border: 1px solid #ced4da;\n  border-radius: 0.25rem;\n  min-height: 5rem;\n}\n.sko-rrp-popup {\n  position: absolute;\n  height: auto;\n  width: 500px;\n  margin-top: 1px;\n  margin-bottom: 1px;\n  border: 1px solid #d9d9d9;\n  background-color: #fff;\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  top: 40px;\n  z-index: 5000;\n}\n.sko-rrp-popup.range {\n    width: 496px;\n}\n.sko-rrp-popup-body {\n  display: flex;\n  height: 90%;\n}\n.sko-rrp-popup-footer {\n  clear: both;\n  text-align: right;\n  border-top: 1px solid rgba(0, 0, 0, 0.05);\n}\n.sko-rrp-popup-rrule {\n  font-size: 14px;\n  padding: 0.5rem;\n  width: 50%;\n}\n.sko-rrp-popup-rrule .form-group {\n  margin-bottom: 0px;\n}\n.sko-rrp-popup-calendar {\n  width: 50%;\n}\n.sko-rrp-rrule-label {\n  width: 35%;\n}\n.sko-rrp-rrule-input {\n  width: 60%;\n}\n.sko-rrp-rrule-interval-input {\n  width: 20%;\n}\n.sko-rrp-rrule-monthly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal {\n  display: flex;\n}\n.sko-rrp-rrule-monthly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-monthly-type-ordinal label {\n  width: 30%;\n}\n.sko-rrp-rrule-yearlly-type-number[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-yearly-type-ordinal {\n  margin-bottom: 5px;\n}\n.sko-rrp-rrule-yearly-type-ordinal[disabled] {\n  pointer-events: none;\n}\n.sko-rrp-rrule-bymonth .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 30%;\n}\n.sko-rrp-rrule-bymonthday .btn {\n  font-size: 14px;\n  height: 30px;\n  padding: 2px;\n  width: 28px;\n}\nselect.sko-rrp-rrule-bymonthday {\n  width: 20%;\n}\n.sko-rrp-rrule-bysetpos-input {\n  width: 40%;\n}\n.sko-rrp-rrule-byday-input {\n  width: 55%;\n}\n.sko-rrp-rrule-bymonth-input {\n  width: 55%;\n}\n.sko-rrp-btn {\n  line-height: 1;\n  margin: 0 5px;\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -34347,18 +34376,24 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 145 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjM2LjQ0N3B4IiBoZWlnaHQ9IjM2LjQ0N3B4IiB2aWV3Qm94PSIwIDAgMzYuNDQ3IDM2LjQ0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYuNDQ3IDM2LjQ0NzsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0zMC4yMjQsMy45NDhoLTEuMDk4VjIuNzVjMC0xLjUxNy0xLjE5Ny0yLjc1LTIuNjctMi43NWMtMS40NzQsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N2gtMi43NFYyLjc1DQoJCQljMC0xLjUxNy0xLjE5Ny0yLjc1LTIuNjctMi43NWMtMS40NzMsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N2gtMi43NFYyLjc1YzAtMS41MTctMS4xOTctMi43NS0yLjY3LTIuNzUNCgkJCWMtMS40NzMsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N0g2LjIyNGMtMi4zNDMsMC00LjI1LDEuOTA3LTQuMjUsNC4yNXYyNGMwLDIuMzQzLDEuOTA3LDQuMjUsNC4yNSw0LjI1aDI0DQoJCQljMi4zNDQsMCw0LjI1LTEuOTA3LDQuMjUtNC4yNXYtMjRDMzQuNDc0LDUuODU1LDMyLjU2NywzLjk0OCwzMC4yMjQsMy45NDh6IE0yNS4yODYsMi43NWMwLTAuNjg5LDAuNTI1LTEuMjUsMS4xNy0xLjI1DQoJCQljMC42NDYsMCwxLjE3LDAuNTYxLDEuMTcsMS4yNXY0Ljg5NmMwLDAuNjg5LTAuNTI0LDEuMjUtMS4xNywxLjI1Yy0wLjY0NSwwLTEuMTctMC41NjEtMS4xNy0xLjI1VjIuNzV6IE0xNy4yMDYsMi43NQ0KCQkJYzAtMC42ODksMC41MjUtMS4yNSwxLjE3LTEuMjVzMS4xNywwLjU2MSwxLjE3LDEuMjV2NC44OTZjMCwwLjY4OS0wLjUyNSwxLjI1LTEuMTcsMS4yNXMtMS4xNy0wLjU2MS0xLjE3LTEuMjVWMi43NXogTTkuMTI1LDIuNzUNCgkJCWMwLTAuNjg5LDAuNTI1LTEuMjUsMS4xNy0xLjI1czEuMTcsMC41NjEsMS4xNywxLjI1djQuODk2YzAsMC42ODktMC41MjUsMS4yNS0xLjE3LDEuMjVzLTEuMTctMC41NjEtMS4xNy0xLjI1VjIuNzV6DQoJCQkgTTMxLjk3NCwzMi4xOThjMCwwLjk2NS0wLjc4NSwxLjc1LTEuNzUsMS43NWgtMjRjLTAuOTY1LDAtMS43NS0wLjc4NS0xLjc1LTEuNzV2LTIyaDI3LjVWMzIuMTk4eiIvPg0KCQk8cmVjdCB4PSI2LjcyNCIgeT0iMTQuNjI2IiB3aWR0aD0iNC41OTUiIGhlaWdodD0iNC4wODkiLz4NCgkJPHJlY3QgeD0iMTIuODU3IiB5PSIxNC42MjYiIHdpZHRoPSI0LjU5NiIgaGVpZ2h0PSI0LjA4OSIvPg0KCQk8cmVjdCB4PSIxOC45OTUiIHk9IjE0LjYyNiIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg5Ii8+DQoJCTxyZWN0IHg9IjI1LjEyOCIgeT0iMTQuNjI2IiB3aWR0aD0iNC41OTYiIGhlaWdodD0iNC4wODkiLz4NCgkJPHJlY3QgeD0iNi43MjQiIHk9IjIwLjA4NCIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjEyLjg1NyIgeT0iMjAuMDg0IiB3aWR0aD0iNC41OTYiIGhlaWdodD0iNC4wODYiLz4NCgkJPHJlY3QgeD0iMTguOTk1IiB5PSIyMC4wODQiIHdpZHRoPSI0LjU5NSIgaGVpZ2h0PSI0LjA4NiIvPg0KCQk8cmVjdCB4PSIyNS4xMjgiIHk9IjIwLjA4NCIgd2lkdGg9IjQuNTk2IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjYuNzI0IiB5PSIyNS41NCIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjEyLjg1NyIgeT0iMjUuNTQiIHdpZHRoPSI0LjU5NiIgaGVpZ2h0PSI0LjA4NiIvPg0KCQk8cmVjdCB4PSIxOC45OTUiIHk9IjI1LjU0IiB3aWR0aD0iNC41OTUiIGhlaWdodD0iNC4wODYiLz4NCgkJPHJlY3QgeD0iMjUuMTI4IiB5PSIyNS41NCIgd2lkdGg9IjQuNTk2IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo="
+
+/***/ }),
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(149)
+  __webpack_require__(150)
 }
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(135),
   /* template */
-  __webpack_require__(147),
+  __webpack_require__(148),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -34390,7 +34425,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34409,6 +34444,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "comingup": true,
       "comingup-text": "Coming up",
       "comingup-offset": 7,
+      "confirm": false,
       "calendar": false,
       "id": "rrulepicker1",
       "input-class": {
@@ -34451,7 +34487,7 @@ if (false) {
 }
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34635,7 +34671,7 @@ if (false) {
 }
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34675,12 +34711,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.preventDefault()
       }
     }
-  }), _vm._v(" "), _c('i', {
-    staticClass: "sko-rrp-input-icon fa fa-calendar",
-    on: {
-      "mouseenter": _vm.hoverIcon,
-      "mouseleave": _vm.hoverIcon,
-      "click": _vm.clickIcon
+  }), _vm._v(" "), _c('img', {
+    staticClass: "sko-rrp-input-icon",
+    attrs: {
+      "src": __webpack_require__(145)
     }
   }), _vm._v(" "), _c('div', {
     directives: [{
@@ -35325,7 +35359,7 @@ if (false) {
 }
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -35351,7 +35385,7 @@ if(false) {
 }
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -35377,7 +35411,7 @@ if(false) {
 }
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports) {
 
 /**
@@ -35410,7 +35444,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -35438,7 +35472,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35541,7 +35575,7 @@ var ENGLISH = {
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
