@@ -115,7 +115,7 @@
                     >
                         <label class="sko-rrp-rrule-label" for="rrp_interval2">{{ translation.on }}</label>
                         <div class="sko-rrp-rrule-byweekday btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-light sko-rrp-" v-for="(day, index) in translation.days">
+                            <label class="btn btn-light sko-rrp-rrule-byweekday-weekday" v-for="(day, index) in translation.days">
                                 <input type="checkbox" :value="day.key"  v-on:focus="clickWeekday($event)"> {{ day.value }}
                             </label>
                         </div>
@@ -465,6 +465,7 @@
                     let byday       = [];
                     let bymonthday  = [];
                     let bymonth     = null;
+                    let bysetpos    = '';
 
                     switch (that.rrule.frequency) {
                         case 'DAILY' :
@@ -475,8 +476,10 @@
                         case 'WEEKLY' :
                             frequency = that.RRule.WEEKLY
                             interval  = parseInt(that.rrule.interval)
+                            bysetpos  = ''
 
                             //$.each($('.sko-rrp-rrule-byweekday input:checked'), function (i, elem) {
+
                             if (Cmp.is_string(that.rrule.byday)) {
                                 $.each(that.rrule.byday.split(','), (i, bydaypart) => {
                                     //switch ($(elem).val()) {
@@ -527,6 +530,7 @@
                                     break;
                                 case 'ordinal'  :
                                     interval  = 1
+                                    bysetpos  = that.rrule.bysetpos
 
                                     switch (that.rrule.byday) {
                                         case 'SU':
@@ -581,6 +585,8 @@
                                     }
                                     break;
                                 case 'ordinal'  :
+                                    bysetpos  = that.rrule.bysetpos
+
                                     switch (that.rrule.byday) {
                                         case 'SU':
                                             byday.push(that.RRule.SU.nth(parseInt(that.rrule.bysetpos)));
@@ -625,12 +631,16 @@
                         , byweekday     : byday
                         , bymonthday    : bymonthday
                         , bymonth       : bymonth
-                        , bysetpos      : Cmp.is_numeric(that.rrule.bysetpos) ? parseInt(that.rrule.bysetpos) : 1
                         , dtstart       : that.moment(that.rrule.startdate).toDate()
                     }
 
+                    if (that.rrule.frequency === 'MONTHLY'
+                    ||  that.rrule.frequency === 'YEARLY') {
+                        rule.bysetpos   = Cmp.is_numeric(bysetpos) ? parseInt(bysetpos) : null
+                    }
+
                     if (that.rrule.enddate) {
-                        rule.until  = that.moment(that.rrule.enddate).toDate();
+                        rule.until      = that.moment(that.rrule.enddate).toDate();
                     }
 
                     let rrule = new that.RRule(rule)
@@ -648,6 +658,7 @@
                 let that = this;
 
                 if (that.value) {
+
                     if (!that.rrule.initiated) {
                         that.initRrule(that.value);
                     }
@@ -694,7 +705,7 @@
                 return dates;
             }
 
-            , initRrule (value) {
+            , initRrule () {
                 let that = this
 
                 if (that.value) {
@@ -716,7 +727,7 @@
                                     that.rrule.interval = strpartvalue
                                     break;
                                 case 'BYDAY'        :
-                                    that.rrule.byday = strpartvalue.replace(/[^a-zA-Z]/gi, '')
+                                    that.rrule.byday = strpartvalue.replace(/[^a-zA-Z\,]/gi, '')
                                     break;
                                 case 'BYSETPOS'     :
                                     that.rrule.bysetpos = strpartvalue

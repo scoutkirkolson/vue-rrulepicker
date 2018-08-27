@@ -31,7 +31,6 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
-            , 'assets': path.resolve(__dirname, '../src/assets')
         }
     },
     devServer: {
@@ -44,21 +43,6 @@ module.exports = {
     devtool: '#eval-source-map'
 }
 
-/*
-module.exports = {
-    entry: path.join(__dirname, '../examples/src/app.js'),
-    html: {
-        template: path.join(__dirname, '../examples/src/index.html')
-    },
-    webpack: {
-        devtool: false,
-        output: {
-            path: dist,
-            publicPath: ''
-        }
-    }
-};
-*/
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map'
