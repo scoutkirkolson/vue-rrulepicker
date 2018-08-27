@@ -6,6 +6,11 @@ Vue-based Form input element to create RRULE string for recurring events
 ## Demo
 See live demo on [Live Demo](https://scoutkirkolson.github.io/vue-rrulepicker/)
 
+# Requirements
+
+- [Vue.js](https://github.com/vuejs/vue) `^2.0.0` 
+- [Bootstrap](https://getbootstrap.com/) `^4.0` (Optional)
+
 ## Installation
 `npm install scoutkirkolson/vue-rrulepicker --save`
 
