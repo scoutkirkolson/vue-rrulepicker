@@ -1,4 +1,4 @@
-# Sko-RRulePicker
+# SkoRRulePicker
 Vue-based Form input element to create RRULE string for recurring events
 
 **Works with Vue 2.***
