@@ -2,15 +2,18 @@ var path = require('path')
 var webpack = require('webpack')
 var urloader = require('url-loader')
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: './src/sko-rrulepicker.vue',
+
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
         filename: 'sko-rrulepicker.js',
         libraryTarget: 'umd',
     },
+
     module: {
         rules: [
             {
@@ -28,19 +31,23 @@ module.exports = {
         ]
 
     },
+
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
             , 'assets': path.resolve(__dirname, '../src/assets')
         }
     },
+
     devServer: {
         historyApiFallback: true,
         noInfo: true
     },
+
     performance: {
         hints: false
     },
+
     devtool: '#eval-source-map'
 }
 

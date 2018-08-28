@@ -8,7 +8,7 @@ import App from './App.vue'
 /* *** Use `module` version *** */
 import skoRRulePicker from '../../src/sko-rrulepicker.vue'
 
-Vue.use(skoRRulePicker);
+//Vue.use(skoRRulePicker);
 
 new Vue({
     el: '#app'

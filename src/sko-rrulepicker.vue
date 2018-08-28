@@ -11,31 +11,37 @@
             name            = "date"
             :disabled       = "disabled"
             :data-label     = "$attrs['data-label']"
-            :class          = "inputClass"
+            :class          = "[
+                inputClass
+                , disabled ? disabledClass : ''
+                , (required && !value) ? requiredClass : ''
+            ]"
             :value          = "getText()"
             :placeholder    = "innerPlaceholder"
             ref             = "input"
             :required       = "required"
-            @mouseenter     = "hoverIcon"
-            @mouseleave     = "hoverIcon"
             @click          = "togglePopup"
             @mousedown      = "$event.preventDefault()"
         >
-        <!--
-        <i
-            class           = "sko-rrp-input-icon fa fa-calendar"
-            @mouseenter     = "hoverIcon"
-            @mouseleave     = "hoverIcon"
-            @click          = "clickIcon" >
-        </i>
-        -->
         <img
-            class           = "sko-rrp-input-icon"
-            src             = "./assets/calendar.svg"
+            :class          = "[
+                'sko-rrp-input-img'
+            ]"
+            :src            = "iconSource"
             @click          = "togglePopup"
+            v-if            = "iconSource && !iconClass"
         >
+        <i
+            :class          = "[
+                'sko-rrp-input-icon'
+                , iconClass
+            ]"
+            @click          = "togglePopup"
+            v-if            = "iconClass"
+        >
+        </i>
 
-        <!-- coming up -->
+        <!-- coming up list -->
         <div
             class           = "sko-rrp-comingup"
             v-show          = "comingup"
@@ -70,6 +76,7 @@
                     <!-- startdate -->
                     <div
                         class           = "form-group"
+                        v-show          = "startDateInput"
                     >
                         <label class="sko-rrp-rrule-label" for="rrp_startdate">{{ translation.startdate }}</label>
                         <input id="rrp_startdate" class="sko-rrp-rrule-input" type="date" v-model="rrule.startdate">
@@ -242,10 +249,12 @@
 </template>
 
 <script>
-    import * as Cmp from 'es6lib/functions/compare.es6';
+    import JQuery from 'jquery'
     import SkoRRulePickerCalendarPanel from './sko-rrulepicker-calendarpanel.vue'
     import Languages from './languages_rrulepicker.js'
     import * as RRL from './languages_rrule.js'
+
+    let $ = JQuery
 
     export default {
         //COMPONENTS
@@ -255,48 +264,9 @@
 
         //PROPS
         , props: {
-            value: null
-
-            , disabled: {
+            calendar: {
                 type        : Boolean
                 , default   : false
-            }
-
-            , width: {
-                type        : [String, Number]
-                , default   : '100%'
-            }
-
-            , placeholder: {
-                type        : String
-                , default   : ''
-            }
-
-            , required: {
-                type        : Boolean
-                , default   : false
-            }
-
-            ,lang: {
-                type        : String
-                , default   : 'en'
-            }
-
-            //, shortcuts: {
-            //    type        : [Boolean, Array]
-            //    , default   : true
-            //}
-
-            , disabledDays: {
-                type        : Array
-                , default   : function() {
-                    return []
-                }
-            }
-
-            , calendar: {
-                type        : Boolean
-                , default   : true
             }
 
             , confirm: {
@@ -329,14 +299,21 @@
                 , default   : 'Coming up'
             }
 
-            , inputClass: {
-                type        : [String, Object]
-                , default   : 'form-control sko-rrp-input'
+            , disabled: {
+                type        : Boolean
+                , default   : false
             }
 
-            , startDate: {
-                type        : String
+            , disabledClass: {
+                type        : [String, Object]
                 , default   : ''
+            }
+
+            , disabledDays: {
+                type        : Array
+                , default   : function() {
+                    return []
+                }
             }
 
             , endDate: {
@@ -348,6 +325,64 @@
                 type        : Boolean
                 , default   : true
             }
+
+            , iconClass: {
+                type        : String
+                , default   : ''
+            }
+
+            , iconSource: {
+                type        : String
+                , default   : 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjM2LjQ0N3B4IiBoZWlnaHQ9IjM2LjQ0N3B4IiB2aWV3Qm94PSIwIDAgMzYuNDQ3IDM2LjQ0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzYuNDQ3IDM2LjQ0NzsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0zMC4yMjQsMy45NDhoLTEuMDk4VjIuNzVjMC0xLjUxNy0xLjE5Ny0yLjc1LTIuNjctMi43NWMtMS40NzQsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N2gtMi43NFYyLjc1DQoJCQljMC0xLjUxNy0xLjE5Ny0yLjc1LTIuNjctMi43NWMtMS40NzMsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N2gtMi43NFYyLjc1YzAtMS41MTctMS4xOTctMi43NS0yLjY3LTIuNzUNCgkJCWMtMS40NzMsMC0yLjY3LDEuMjMzLTIuNjcsMi43NXYxLjE5N0g2LjIyNGMtMi4zNDMsMC00LjI1LDEuOTA3LTQuMjUsNC4yNXYyNGMwLDIuMzQzLDEuOTA3LDQuMjUsNC4yNSw0LjI1aDI0DQoJCQljMi4zNDQsMCw0LjI1LTEuOTA3LDQuMjUtNC4yNXYtMjRDMzQuNDc0LDUuODU1LDMyLjU2NywzLjk0OCwzMC4yMjQsMy45NDh6IE0yNS4yODYsMi43NWMwLTAuNjg5LDAuNTI1LTEuMjUsMS4xNy0xLjI1DQoJCQljMC42NDYsMCwxLjE3LDAuNTYxLDEuMTcsMS4yNXY0Ljg5NmMwLDAuNjg5LTAuNTI0LDEuMjUtMS4xNywxLjI1Yy0wLjY0NSwwLTEuMTctMC41NjEtMS4xNy0xLjI1VjIuNzV6IE0xNy4yMDYsMi43NQ0KCQkJYzAtMC42ODksMC41MjUtMS4yNSwxLjE3LTEuMjVzMS4xNywwLjU2MSwxLjE3LDEuMjV2NC44OTZjMCwwLjY4OS0wLjUyNSwxLjI1LTEuMTcsMS4yNXMtMS4xNy0wLjU2MS0xLjE3LTEuMjVWMi43NXogTTkuMTI1LDIuNzUNCgkJCWMwLTAuNjg5LDAuNTI1LTEuMjUsMS4xNy0xLjI1czEuMTcsMC41NjEsMS4xNywxLjI1djQuODk2YzAsMC42ODktMC41MjUsMS4yNS0xLjE3LDEuMjVzLTEuMTctMC41NjEtMS4xNy0xLjI1VjIuNzV6DQoJCQkgTTMxLjk3NCwzMi4xOThjMCwwLjk2NS0wLjc4NSwxLjc1LTEuNzUsMS43NWgtMjRjLTAuOTY1LDAtMS43NS0wLjc4NS0xLjc1LTEuNzV2LTIyaDI3LjVWMzIuMTk4eiIvPg0KCQk8cmVjdCB4PSI2LjcyNCIgeT0iMTQuNjI2IiB3aWR0aD0iNC41OTUiIGhlaWdodD0iNC4wODkiLz4NCgkJPHJlY3QgeD0iMTIuODU3IiB5PSIxNC42MjYiIHdpZHRoPSI0LjU5NiIgaGVpZ2h0PSI0LjA4OSIvPg0KCQk8cmVjdCB4PSIxOC45OTUiIHk9IjE0LjYyNiIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg5Ii8+DQoJCTxyZWN0IHg9IjI1LjEyOCIgeT0iMTQuNjI2IiB3aWR0aD0iNC41OTYiIGhlaWdodD0iNC4wODkiLz4NCgkJPHJlY3QgeD0iNi43MjQiIHk9IjIwLjA4NCIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjEyLjg1NyIgeT0iMjAuMDg0IiB3aWR0aD0iNC41OTYiIGhlaWdodD0iNC4wODYiLz4NCgkJPHJlY3QgeD0iMTguOTk1IiB5PSIyMC4wODQiIHdpZHRoPSI0LjU5NSIgaGVpZ2h0PSI0LjA4NiIvPg0KCQk8cmVjdCB4PSIyNS4xMjgiIHk9IjIwLjA4NCIgd2lkdGg9IjQuNTk2IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjYuNzI0IiB5PSIyNS41NCIgd2lkdGg9IjQuNTk1IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJCTxyZWN0IHg9IjEyLjg1NyIgeT0iMjUuNTQiIHdpZHRoPSI0LjU5NiIgaGVpZ2h0PSI0LjA4NiIvPg0KCQk8cmVjdCB4PSIxOC45OTUiIHk9IjI1LjU0IiB3aWR0aD0iNC41OTUiIGhlaWdodD0iNC4wODYiLz4NCgkJPHJlY3QgeD0iMjUuMTI4IiB5PSIyNS41NCIgd2lkdGg9IjQuNTk2IiBoZWlnaHQ9IjQuMDg2Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo='
+            }
+
+            , inputClass: {
+                type        : [String, Object]
+                , default   : 'sko-rrp-input'
+            }
+
+            , lang: {
+                type        : String
+                , default   : 'en'
+            }
+
+            , placeholder: {
+                type        : String
+                , default   : ''
+            }
+
+            , required: {
+                type        : Boolean
+                , default   : false
+            }
+
+            , requiredClass: {
+                type        : [String, Object]
+                , default   : ''
+            }
+
+            //, shortcuts: {
+            //    type        : [Boolean, Array]
+            //    , default   : true
+            //}
+
+            , startDate: {
+                type        : String
+                , default   : ''
+            }
+
+            , startDateInput: {
+                type        : Boolean
+                , default   : true
+            }
+
+            , value: null
+
+            , width: {
+                type        : [String, Number]
+                , default   : '100%'
+            }
+
         }
 
         //DATA
@@ -465,7 +500,7 @@
             getWidth() {
                 let that = this;
 
-                return Cmp.is_numeric(that.width) ? that.width + 'px' : that.width;
+                return that.is_numeric(that.width) ? that.width + 'px' : that.width;
             }
 
             , getRRule() {
@@ -493,7 +528,7 @@
 
                             //$.each($('.sko-rrp-rrule-byweekday input:checked'), function (i, elem) {
 
-                            if (Cmp.is_string(that.rrule.byday)) {
+                            if (that.is_string(that.rrule.byday)) {
                                 $.each(that.rrule.byday.split(','), (i, bydaypart) => {
                                     //switch ($(elem).val()) {
                                     switch (bydaypart) {
@@ -533,7 +568,7 @@
                                 case 'number'   :
                                     interval  = parseInt(that.rrule.interval)
 
-                                    if (Cmp.is_string(that.rrule.bymonthday)) {
+                                    if (that.is_string(that.rrule.bymonthday)) {
                                         $.each(that.rrule.bymonthday.split(','), (i, bymonthdaypart) => {
                                             bymonthday.push(parseInt(bymonthdaypart));
                                         })
@@ -589,7 +624,7 @@
                             switch (that.rrule.yearly_type) {
                                 case 'number'   :
                                     //$.each($('.sko-rrp-rrule-bymonthday input:checked'), function (i, elem) {
-                                    if (Cmp.is_string(that.rrule.bymonthday)) {
+                                    if (that.is_string(that.rrule.bymonthday)) {
                                         $.each(that.rrule.bymonthday.split(','), (i, bymonthdaypart) => {
                                             bymonthday.push(parseInt(bymonthdaypart));
                                         })
@@ -649,7 +684,7 @@
 
                     if (that.rrule.frequency === 'MONTHLY'
                     ||  that.rrule.frequency === 'YEARLY') {
-                        rule.bysetpos   = Cmp.is_numeric(bysetpos) ? parseInt(bysetpos) : null
+                        rule.bysetpos   = that.is_numeric(bysetpos) ? parseInt(bysetpos) : null
                     }
 
                     if (that.rrule.enddate) {
@@ -709,7 +744,7 @@
 
                         count++;
 
-                        if (count > that.comingupLimit) {
+                        if (count >= that.comingupLimit) {
                             return false;
                         }
                     });
@@ -892,6 +927,17 @@
                 return that.getLanguage().strings[id] || id;
             }
 
+            , is_string(s) {
+              return (typeof(s) !== 'undefined') ? (typeof(s) === 'string' || s instanceof String) : false;
+            }
+
+            , is_numeric(mixed_var) {
+              if (mixed_var === '') {
+                return false;
+              }
+
+              return !isNaN(mixed_var * 1);
+            }
         }
     }
 </script>
@@ -920,7 +966,7 @@
     }
 
     .sko-rrp-input-icon {
-        top: 3px;
+        top: 10px;
         right: 3px;
         position: absolute;
         width: 30px;
@@ -933,6 +979,11 @@
             height: 100%;
             vertical-align: middle;
         }
+    }
+
+    .sko-rrp-input-img {
+        @extend .sko-rrp-input-icon;
+        top: 3px;
     }
 
     .sko-rrp-input-icon__close::before {
@@ -984,7 +1035,6 @@
     .sko-rrp-popup-rrule {
         font-size: 14px;
         padding: 0.5rem;
-        width: 50%;
     }
     .sko-rrp-popup-rrule .form-group {
         margin-bottom: 0px;
