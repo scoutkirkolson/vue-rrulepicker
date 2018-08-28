@@ -1,7 +1,7 @@
 {
   "name": "sko-rrulepicker",
   "description": "Vue2 RRULE input element",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Kirk Olson",
   "license": "MIT",
   "bugs": {
