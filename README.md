@@ -6,6 +6,11 @@ Vue-based Form input element to create RRULE string for recurring events
 ## Demo
 See live demo on [Live Demo](https://scoutkirkolson.github.io/vue-rrulepicker/)
 
+# Requirements
+
+- [Vue.js](https://github.com/vuejs/vue) `^2.0.0` 
+- [Bootstrap](https://getbootstrap.com/) `^4.0` (Optional)
+
 ## Installation
 `npm install scoutkirkolson/vue-rrulepicker --save`
 
@@ -40,14 +45,22 @@ new Vue({
 |comingup|Show list with dates based on selected rrule values|false|Boolean|true|
 |comingup-limit|Maxiumum number of dates shown in comingup list|false|Number|5|
 |comingup-text|Text above comingup list|false|String|Coming up|
-|confirm|Show confirm button|false|Boolean|true|
+|confirm|Show confirm button in popup|false|Boolean|true|
 |confirm-text|Text on confirm button|false|String|OK|
 |disabled|Disable input|false|Boolean|false|
-|input-class|CSS class used on input|false|String / Object|sko-rrpi-input|
+|disabled-class|CSS class used on input when disabled|false|String / Object|''|
+|end-date|End date used to calculate rrule|false|String|''|
+|end-date-input|Show enddate input in popup|false|Boolean|true|
+|icon-class|CSS class used on input icon. This overrides icon-source|false|String / Object|''|
+|icon-source|Source used on input image.|false|String / Object|Base64 calendar image|
+|input-class|CSS class used on input|false|String / Object|sko-rrp-input|
 |lang|Language used by the component (currently only English ('en') and Dutch ('nl') are supported |false|String|en|
 |placeholder|Input placeholder|false|String|-|
 |required|Make input required|false|Boolean|false|
+|required-class|CSS class used on input when required|false|String / Object|''|
 |start-date|Start date used to calculate rrule|false|String|''|
+|start-date-input|Show startdate input in popup|false|Boolean|true|
+|width|Input width|false|String / Number|'100%'|
 
 ## License
 
