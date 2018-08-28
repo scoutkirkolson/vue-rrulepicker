@@ -8,7 +8,7 @@ You can find more information about the "RRULE" property in the section ["3.8.5.
 ## Demo
 See live demo on [Live Demo](https://scoutkirkolson.github.io/vue-rrulepicker/)
 
-# Requirements
+## Requirements
 
 - [Vue.js](https://github.com/vuejs/vue) `^2.0.0` 
 - [Bootstrap](https://getbootstrap.com/) `^4.0` (Optional)
