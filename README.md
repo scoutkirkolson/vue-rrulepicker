@@ -1,12 +1,14 @@
-# Sko-RRulePicker
-Vue-based Form input element to create RRULE string for recurring events
+# SkoRRulePicker
+Vue-based Form input element to create RRULE string for recurring events.
+
+You can find more information about the "RRULE" property in the section ["3.8.5.3. Recurrence Rule"](https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html) of [RFC 5545](https://icalendar.org/RFC-Specifications/iCalendar-RFC-5545/).
 
 **Works with Vue 2.***
 
 ## Demo
 See live demo on [Live Demo](https://scoutkirkolson.github.io/vue-rrulepicker/)
 
-# Requirements
+## Requirements
 
 - [Vue.js](https://github.com/vuejs/vue) `^2.0.0` 
 - [Bootstrap](https://getbootstrap.com/) `^4.0` (Optional)
