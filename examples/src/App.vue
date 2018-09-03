@@ -25,6 +25,7 @@
                         <sko-r-rule-picker
                             id              = "rrulepicker1"
                             input-class     = "form-control"
+                            start-date      = "2018-07-01"
                             v-model         = "rrule1"
                         ></sko-r-rule-picker>
                         <br />
@@ -37,7 +38,7 @@
 &lt;sko-r-rule-picker
     :input-class    = "form-control"
     start-date      = "2018-07-01"
-    v-model         = "rrule"
+    v-model         = "rrule1"
 &gt;&lt;/sko-r-rule-picker&gt;
                             </code>
                         </pre>

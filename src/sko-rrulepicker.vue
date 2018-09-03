@@ -79,7 +79,15 @@
                         v-show          = "startDateInput"
                     >
                         <label class="sko-rrp-rrule-label" for="rrp_startdate">{{ translation.startdate }}</label>
-                        <input id="rrp_startdate" class="sko-rrp-rrule-input" type="date" v-model="rrule.startdate">
+                        <!--<input id="rrp_startdate" class="rrp-rrule-input" type="date" v-model="rrule.startdate">-->
+                        <datepicker
+                            :bootstrap-styling  = "false"
+                            :calendar-button    = "true"
+                            calendar-button-icon= "fa fa-calendar"
+                            format              = "dd-MM-yyyy"
+                            wrapper-class       = "sko-rrp-rrule-input"
+                            v-model             = "rrule.startdate"
+                        ></datepicker>
                     </div>
 
                     <!-- enddate -->
@@ -88,7 +96,15 @@
                         v-show          = "endDateInput"
                     >
                         <label class="sko-rrp-rrule-label" for="rrp_enddate">{{ translation.enddate }}</label>
-                        <input id="rrp_enddate" class="sko-rrp-rrule-input" type="date" v-model="rrule.enddate">
+                        <!--<input id="rrp_enddate" class="sko-rrp-rrule-input" type="date" v-model="rrule.enddate">-->
+                        <datepicker
+                            :bootstrap-styling  = "false"
+                            :calendar-button    = "true"
+                            calendar-button-icon= "fa fa-calendar"
+                            format              = "dd-MM-yyyy"
+                            wrapper-class       = "sko-rrp-rrule-input"
+                            v-model             = "rrule.enddate"
+                        ></datepicker>
                     </div>
 
                     <!-- frequency -->
@@ -250,6 +266,7 @@
 
 <script>
     import JQuery from 'jquery'
+    import Datepicker from 'vuejs-datepicker';
     import SkoRRulePickerCalendarPanel from './sko-rrulepicker-calendarpanel.vue'
     import Languages from './languages_rrulepicker.js'
     import * as RRL from './languages_rrule.js'
@@ -259,7 +276,8 @@
     export default {
         //COMPONENTS
         components  : {
-            SkoRRulePickerCalendarPanel
+            Datepicker
+            , SkoRRulePickerCalendarPanel
         }
 
         //PROPS
@@ -507,7 +525,8 @@
                 let that = this;
 
                 if (that.rrule.startdate
-                &&  that.rrule.frequency) {
+                &&  that.rrule.frequency
+                &&  that.moment(that.rrule.startdate).isValid()) {
                     let frequency   = null;
                     let interval    = 1;
                     let byday       = [];
@@ -737,7 +756,7 @@
                 let dates= [];
                 let count= 0;
 
-                if (that.getText() && rule) {
+                if (rule && that.getText()) {
                     //$.each(rule.all(), function(i, item) {
                     $.each(rule.between(that.moment().add(that.comingupOffset, 'day').startOf('day').toDate(), that.moment().add(1, 'years').toDate()), function(i, item) {
                         dates.push(that.moment(item).format('dddd D MMMM YYYY'));
@@ -1051,6 +1070,7 @@
         width: 35%;
     }
     .sko-rrp-rrule-input {
+        display: inline-block;
         width: 60%;
     }
 
