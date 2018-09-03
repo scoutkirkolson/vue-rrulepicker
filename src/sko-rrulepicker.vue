@@ -725,7 +725,6 @@
                 let that = this;
 
                 if (that.value) {
-
                     if (!that.rrule.initiated) {
                         that.initRrule(that.value);
                     }
@@ -733,7 +732,7 @@
                     let rule = that.getRRule();
 
                     if (rule) {
-                        return rule.toText(that.gettext, that.getLanguage());
+                        return rule.toText(that.gettext(), that.getLanguage());
                     }
                 }
             }
@@ -757,7 +756,8 @@
                 let count= 0;
 
                 if (rule && that.getText()) {
-                    //$.each(rule.all(), function(i, item) {
+                    that.moment.locale(that.lang);
+
                     $.each(rule.between(that.moment().add(that.comingupOffset, 'day').startOf('day').toDate(), that.moment().add(1, 'years').toDate()), function(i, item) {
                         dates.push(that.moment(item).format('dddd D MMMM YYYY'));
 
@@ -886,7 +886,7 @@
                 let byday = '';
                 let comma = '';
 
-                $.each($('.sko-rrp-rrule-byweekday input:checked'), function (i, elem) {
+                $.each($(that.$el).find('.sko-rrp-rrule-byweekday input:checked'), function (i, elem) {
                     byday += comma + $(elem).val()
                     comma = ','
                 });
@@ -898,7 +898,7 @@
                 let bymonthday  = '';
                 let comma       = '';
 
-                $.each($('.sko-rrp-rrule-bymonthday input:checked'), function (i, elem) {
+                $.each($(that.$el).find('.sko-rrp-rrule-bymonthday input:checked'), function (i, elem) {
                     bymonthday += comma + $(elem).val()
                     comma = ','
                 });
