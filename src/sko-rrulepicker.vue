@@ -732,7 +732,7 @@
                     let rule = that.getRRule();
 
                     if (rule) {
-                        return rule.toText(that.gettext(), that.getLanguage());
+                        return rule.toText(that.gettext, that.getLanguage());
                     }
                 }
             }
@@ -756,8 +756,6 @@
                 let count= 0;
 
                 if (rule && that.getText()) {
-                    that.moment.locale(that.lang);
-
                     $.each(rule.between(that.moment().add(that.comingupOffset, 'day').startOf('day').toDate(), that.moment().add(1, 'years').toDate()), function(i, item) {
                         dates.push(that.moment(item).format('dddd D MMMM YYYY'));
 
@@ -980,6 +978,7 @@
         &:disabled, &.disabled {
         }
     }
+
     .sko-rrp-input[readonly]:not([disabled]) {
         background-color: transparent !important;
     }
