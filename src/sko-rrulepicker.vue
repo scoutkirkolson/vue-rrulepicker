@@ -111,9 +111,18 @@
                     <div
                         class           = "form-group"
                     >
-                        <label class="sko-rrp-rrule-label" for="rrp_frequency">{{ translation.frequency }}</label>
-                        <select id="rrp_frequency" class="sko-rrp-rrule-input" v-model="rrule.frequency">
-                            <option v-for="freq in translation.freqs" :value="freq.key">{{ freq.value }}</option>
+                        <label class="sko-rrp-rrule-label" for="sko_rrp_frequency">{{ translation.frequency }}</label>
+                        <select
+                            id                  = "sko_rrp_frequency"
+                            class               = "sko-rrp-rrule-input"
+                            v-model             = "rrule.frequency"
+                            v-on:change         = "changeFrequency"
+                        >
+                            <option
+                                v-if            = "frequencies.includes(freq.key)"
+                                v-for           = "freq in translation.freqs"
+                                :value          = "freq.key">{{ freq.value }}
+                            </option>
                         </select>
                     </div>
 
@@ -342,6 +351,11 @@
             , endDateInput: {
                 type        : Boolean
                 , default   : true
+            }
+
+            , frequencies: {
+                type        : Array
+                , default   : ['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']
             }
 
             , iconClass: {
@@ -901,6 +915,27 @@
                     comma = ','
                 });
                 that.rrule.bymonthday = bymonthday;
+            }
+
+            , changeFrequency(e) {
+                let that    = this;
+
+                /*
+                that.currentValue = null;
+
+                that.$emit('input', that.currentValue)
+
+                that.rrule.interval = 1
+                that.rrule.bysetpos = ''
+                that.rrule.byday = []
+                that.rrule.bymonth = null
+                that.rrule.bymonthday = []
+
+                that.initRrule()
+                */
+
+                $(that.$el).find('.sko-rrp-rrule-byweekday input').prop('checked', false);
+                $(that.$el).find('.sko-rrp-rrule-bymonthday input').prop('checked', false);
             }
 
             , displayPopup() {
